@@ -1,4 +1,4 @@
-ngular-seed — the seed for AngularJS apps
+angular-seed — the seed for AngularJS apps
 # tsis-volt-ui - tsis t-Studio
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
