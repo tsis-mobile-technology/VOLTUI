@@ -4,50 +4,50 @@
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
-	<!-- start: Meta -->
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>VOLT UI(AngularJS_Bootstrap)</title>
-	<meta name="description" content="VOLT UI(AngularJS_Bootstrap)">
-	<meta name="author" content="tsis,Technology Architecture,Technology Team">
-	<meta name="keyword" content="ACME, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina, AngularJS">
-	<!-- end: Meta -->
+  <!-- start: Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>VOLT UI(AngularJS_Bootstrap)</title>
+  <meta name="description" content="VOLT UI(AngularJS_Bootstrap)">
+  <meta name="author" content="tsis,Technology Architecture,Technology Team">
+  <meta name="keyword" content="ACME, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina, AngularJS">
+  <!-- end: Meta -->
 
-	<!-- start: Mobile Specific -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- end: Mobile Specific -->
+  <!-- start: Mobile Specific -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- end: Mobile Specific -->
 
-	<!-- start: CSS -->
-<!-- 	<link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-	<link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css"> -->
-	<!-- 
-	<link rel="stylesheet" href="css/app.css"/>
-	<link rel="stylesheet" href="css/caster.css"/>
-	<link rel="stylesheet" href="css/rainbow.css"/>
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-	-->
-	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="assets/css/style.min.css" rel="stylesheet">
-	<link href="assets/css/retina.min.css" rel="stylesheet">
-	<link href="css/app.css" rel="stylesheet">
-	<!-- end: CSS -->
+  <!-- start: CSS -->
+<!--  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css"> -->
+  <!-- 
+  <link rel="stylesheet" href="css/app.css"/>
+  <link rel="stylesheet" href="css/caster.css"/>
+  <link rel="stylesheet" href="css/rainbow.css"/>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/style.min.css" rel="stylesheet">
+  <link href="assets/css/retina.min.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
+  <!-- end: CSS -->
 
-	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<link href="assets/css/ie.css" rel="stylesheet">
-	<![endif]-->
+  <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+  <link href="assets/css/ie.css" rel="stylesheet">
+  <![endif]-->
 
-	<!--[if IE 9]>
-	<link id="ie9style" href="assets/css/ie9.css" rel="stylesheet">
-	<![endif]-->
+  <!--[if IE 9]>
+  <link id="ie9style" href="assets/css/ie9.css" rel="stylesheet">
+  <![endif]-->
   <!-- React.js -->
   <link rel="stylesheet" type="text/css" href="assets/css/ngReactGrid-0.6.1.css">
 </head>
 <body>
   <!-- start: Header -->
-  <div class="navbar">
+  <div id="tv-nav" class="navbar">
     <div class="navbar-inner">
       <div class="container">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".sidebar-nav.nav-collapse">
@@ -55,39 +55,41 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+          <span class="header-title"></span>
         <a class="navbar-brand" href="#/"><span app-name></span></a>
 
         <!-- start: Header Menu -->
-				  <!-- start: Notifications Dropdown -->
-				  <!-- end: Notifications Dropdown -->
-				  <!-- start: Message Dropdown -->
-				  <!-- end: Message Dropdown -->
-				  <!-- start: User Dropdown -->
-				  <!-- end: User Dropdown -->
-  		<!-- end: Header Menu -->
-  		</div>
-  	</div>
+          <!-- start: Notifications Dropdown -->
+          <!-- end: Notifications Dropdown -->
+          <!-- start: Message Dropdown -->
+          <!-- end: Message Dropdown -->
+          <!-- start: User Dropdown -->
+          <!-- end: User Dropdown -->
+      <!-- end: Header Menu -->
+      </div>
+    </div>
   </div>
   <!-- end: Header -->
 
   <!-- start: Main -->
-	<div class="container">
-		<div class="row">			
-			<!-- start: Main Menu -->
-			<div ng-include src="'partials/html_main_mainmenu.html'"></div>
-			<!-- end: Main Menu -->
-			
-			<!-- start: Content -->
-		  	<div ng-view></div>
-		  	<!-- end: Content -->
+  <div class="container">
+    <div class="row">     
+      <!-- start: Main Menu -->
+      <div ng-include src="'partials/html_main_mainmenu.html'"></div>
+      <!-- end: Main Menu -->
+      
+      <!-- start: Content -->
+        <div ng-view></div>
+        <!-- end: Content -->
 
-  			<!-- start: Widgets Area -->
-			<div ng-include src="'partials/html_main_widgetsarea.html'"></div>
-			<!-- end: Widgets Area -->
-			<a id="widgets-area-button" class="hidden-sm hidden-xs open"><i class="fa fa-bars"></i></a>
-		</div>
-	</div>
-	<!-- start: Main -->
+        <!-- start: Widgets Area -->
+      <div ng-include src="'partials/html_main_widgetsarea.html'"></div>
+      <!-- end: Widgets Area -->
+      <a id="widgets-area-button" class="hidden-sm hidden-xs open"><i class="fa fa-bars"></i></a>
+                        
+    </div>
+  </div>
+  <!-- start: Main -->
 
   <div class="clearfix"></div>
   <!-- start: Footer-->
