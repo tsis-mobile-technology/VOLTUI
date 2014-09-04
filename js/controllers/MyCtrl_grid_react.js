@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-	myCtrl.controller('MyCtrl_grid_react', ['$scope',  '$http', '$timeout', 'requestHTTP', 'ngReactGrid', function($scope, $http, $timeout, requestHTTP, ngReactGrid) {
+	myCtrl.controller('MyCtrl_grid_react', ['$scope',  '$http', '$timeout', 'requestHTTP', function($scope, $http, $timeout, requestHTTP) {
  
         var employees = [];
         
@@ -55,7 +55,7 @@
             getData: function() {
                 var grid = this;
                 $timeout(function() {
-                    requestHTTP.getJsonCrossdomainCallback("grid_react.jsp", "", setGridReact, onRequestHTTP2Fail);
+                    requestHTTP.getJsonCrossdomainCallback("/t-web/VOLTUI/grid_react.jsp", "", setGridReact, onRequestHTTP2Fail);
                     $scope.grid.data = employees;
                     $scope.grid.totalCount = employees.length;
                 }, 2000);

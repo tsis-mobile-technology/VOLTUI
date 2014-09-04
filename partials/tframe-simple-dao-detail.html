@@ -14,7 +14,7 @@
 							</div>
 							<div class="box-content alerts">
 								<div class="alert alert-warning">
-									<button type="button" class="close" data-dismiss="alert">×</button>
+									<button type="button" class="close" data-dismiss="alert">닫기</button>
 									<h4 class="alert-heading">Simple Dao Example Result</h4>
 									<p>{{tframe_simple_dao_result}}</p>
 								</div>
@@ -30,9 +30,16 @@
 							</div>
 							<div class="box-content alerts">
 								<div class="alert alert-warning">
-									<button type="button" class="close" data-dismiss="alert">×</button>
+									<button type="button" class="close" data-dismiss="alert">닫기</button>
 									<h4 class="alert-heading">Simple Dao JSON Example Result</h4>
-									<p>{{tframe_simple_dao_json_result}}</p>
+									<!--<p>{{tframe_simple_dao_json_result}}</p>-->
+									<div class="box-content">
+										<ng-react-grid grid="grid"></ng-react-grid>
+										<button type="button" ng-click="edit()" ng-show="!isEditing()">Edit Grid</button>
+									    <button type="button" ng-click="save()" ng-show="isEditing()">Save Grid</button>
+									    <button type="button" ng-click="cancel()" ng-show="isEditing()">Cancel</button>
+									    Selections: {{selections}}<br/>Clicked On Record: {{clickedOnRecord}}
+									</div>
 								</div>
 							</div>
 
@@ -46,7 +53,7 @@
 							</div>
 							<div class="box-content alerts">
 								<div class="alert alert-warning">
-									<button type="button" class="close" data-dismiss="alert">×</button>
+									<button type="button" class="close" data-dismiss="alert">닫기</button>
 									<h4 class="alert-heading">Simple Dao Test Example Result</h4>
 									<p>{{tframe_simple_dao_test_result}}</p>
 								</div>

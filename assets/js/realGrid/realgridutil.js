@@ -1,30 +1,41 @@
-﻿
-/* div tag를 flash object tag로 대체 */
+﻿/* console 객체가 없는 경우 에러 방지 */
+if (window.console == undefined) {
+	console = { log: function () { } };
+};
 
+
+
+var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+
+/* div tag를 flash object tag로 대체 */
 function setupGrid(tagid, width, height, onload, params) {
     var flashvars = {
-        id: tagid
+        id: tagid,
+		hideLoader: true
     };
 
     if (params) {
         for (var p in params) {
             flashvars[p] = params[p];
-        }
-    }
+        };
+    };
 
     if (onload) {
         flashvars.onload = typeof (onload) === "function" ? onload.name : onload;
         console && console.log(flashvars);
-    }
+    };
 
     var pars = {
         quality: "high",
-        wmode: "direct",
+        wmode: "opaque",
         allowscriptaccess: "sameDomain",
-        allowfullscreen: "false",
-        seamlesstabbing: false		
+        allowfullscreen: "false"
     };
-
+	
+    if (isFirefox)
+        pars.wmode = "direct";
+		
     var attrs = {
         id: tagid,
         name: tagid,
@@ -50,22 +61,22 @@ function setupTree(tagid, width, height, onload, params) {
     if (params) {
         for (var p in params) {
             flashvars[p] = params[p];
-        }
-    }
+        };
+    };
 
     if (onload) {
         flashvars.onload = typeof (onload) === "function" ? onload.name : onload;
         console && console.log(flashvars);
-    }
+    };
 
     var pars = {
         quality: "high",
-        wmode: "direct",
+        wmode: "opaque",
         allowscriptaccess: "sameDomain",
         allowfullscreen: "true"
     };
 
-    if (isSafari)
+    if (isFirefox)
         pars.wmode = "direct";
 
     var attrs = {

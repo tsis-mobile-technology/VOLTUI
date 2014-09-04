@@ -54,3 +54,22 @@ config(['$routeProvider', function($routeProvider) {
   $rootScope.viewForms = false;
   $rootScope.viewExamplePages = false;
 }]);
+
+angular.module('myApp-template1', [
+ 'ngRoute',
+ 'ngTouch',
+ 'myApp-template1.filters',
+ 'myApp-template1.services',
+ 'myApp-template1.directives',
+ 'myApp-template1.controllers',
+ 'ngReactGrid'
+]).
+config(['$routeProvider', function($routeProvider) {
+ $routeProvider.when('/main', {templateUrl: 'partials/template1-main.html', controller: 'MyCtrl_template1_main'});
+ $routeProvider.when('/main-real', {templateUrl: 'partials/template1-main2.html', controller: 'MyCtrl_template1_main_real'});
+ $routeProvider.when('/welcome', {templateUrl: 'partials/template1-welcome.html', controller: 'MyCtrl_template1_welcome'});
+ $routeProvider.otherwise({redirectTo: '/welcome'});
+}])
+.run(['$rootScope', function($rootScope) {
+ console.log("myApp-template1 run.....");
+}]);

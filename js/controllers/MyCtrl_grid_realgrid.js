@@ -10,62 +10,46 @@
         
         // object element insert at div element
         // tagId(grdMain) named element is must exists in body 
+        console.log("0");
         setupGrid("grdMain", "100%", "500px");
             
         RealGrids.onload = function (id) {
-            console && console.log("==> RealGrid loaded.");
-            
+            console && console.log("==> RealGrid loaded.");         
             mainGrid = new RealGrids.GridView(id);
             mainProvider = new RealGrids.LocalDataProvider();
-            mainGrid.setDataProvider(mainProvider); 
-            
+            mainGrid.setDataProvider(mainProvider);           
             setFields(mainProvider);
             setColumns(mainGrid);
-            setOptions(mainGrid);
-            
-            loadData();
+            setOptions(mainGrid);           
+            loadData();          
         }
         
         function setFields(provider) {
             // json array for data fields
-            var fields = [{
-                fieldName: "ItemId",
-                datType: "text"
-            }, {
-                fieldName: "ItemName"
-            }, {
-                fieldName: "RequestType"
-            }, {
-                fieldName: "ServiceName"
-            }, {
-                fieldName: "ServiceCode"
-            }, {
-                fieldName: "Standard"
-            }, {
-                fieldName: "LowBounds"
-            }, {
-                fieldName: "LowSign"
-            }, {
-                fieldName: "HighSign"
-            }, {
-                fieldName: "HighBounds"
-            }, {
-                fieldName: "CheckUnit"
-            }, {
-                fieldName: "CheckPrice",
-                dataType: "number"
-            }];
+            var fields = [{fieldName: "ItemId",datType: "text"}, 
+                {fieldName: "ItemName"}, 
+                {fieldName: "RequestType"}, 
+                {fieldName: "ServiceName"},
+                {fieldName: "ServiceCode"},
+                {fieldName: "Standard"},
+                {fieldName: "LowBounds"},
+                {fieldName: "LowSign"},
+                {fieldName: "HighSign"},
+                {fieldName: "HighBounds"},
+                {fieldName: "CheckUnit"},
+                {fieldName: "CheckPrice", dataType: "number"}];
 
             if (provider == mainProvider)
                 provider.setFields(fields);
             // If there's more provider then add else if code
-        }   
+        } 
+        
         function setColumns(grid) {
             // json array for grid columns
             // fieldName is must exists data provider fields
             var columns = [{
                     fieldName: "ItemId",
-                width: 80,
+                width: 40,
                 header: { text: "ItemId" },
                 styles: { textAlignment: "near" }
             }, {
@@ -123,21 +107,21 @@
         function setOptions(grid) {
             grid.setOptions({
                 panel: {
-                    visible: true
+                    visible: false
                 },
                 footer: {
-                    visible: true
+                    visible: false
                 },
                 checkBar: {
-                    visible: true
+                    visible: false
                 },
                 statesBar: {
-                    visible: true
+                    visible: false
                 },
                 edit: {
-                    insertable: true,
-                    appendable: true,
-                    updatable: true,
+                    insertable: false,
+                    appendable: false,
+                    updatable: false,
                     deletable: true,
                     deleteRowsConfirm: true,
                     deleteRowsMessage: "Are you sure?"          
