@@ -13,8 +13,19 @@ var myCtrl = angular.module('myApp.controllers', [])
 	.controller('MyCtrl_typography', ['$scope', function($scope){}]);
 
 var templateCtrl = angular.module('myApp-template1.controllers', [])
-	.controller('MyCtrl_template1_left_menu_one', ['$scope', '$location', '$route', '$routeParams', function($scope, $location, $route, $routeParams){
-
+	.controller('MyCtrl_template1_left_menu_one', ['$scope', '$location', '$route', '$routeParams','documentComponent', function($scope, $location, $route, $routeParams, documentComponent){
+	    function init(){
+	        resizeH();
+	        userInfoLoc();
+	    }
+	    function resizeH(){
+	        $("#left-category, #left-menu").css({'height':$(document).height()});
+	    }
+	    function userInfoLoc(){
+	    	console.log("userInfoLoc scrolling....s");
+	    	var temp_ = ($(document).height()) - (($(window).height()) + ($(window).scrollTop()));
+	        $('.user-info').css({'top': $(document).height()-150 });
+	    }
 	    $scope.goVOLTUI = function() {
 	    	console.log("goVOLTUI");
 	        document.location.href = "/t-web/VOLTUI";
@@ -40,4 +51,29 @@ var templateCtrl = angular.module('myApp-template1.controllers', [])
     		$scope.style2="r-l";
     		$scope.style3="active";
 	    };
+	    
+		$scope.$on('$routeChangeSuccess', function(next, current) { 
+			console.log("$routeChangeSuccess... you could trigger something here ...SUCCESS");
+		});
+		$scope.$on('$routeUpdate', function(next, current) { 
+			console.log("$routeChangeSuccess... you could trigger something here ...UPDATE");
+		});
+		$scope.$on('$routeChangeStart', function(next, current) { 
+			console.log("$routeChangeStart... you could trigger something here ...START");
+		});
+		$scope.$on('$locationChangeSuccess', function(next, current) { 
+			console.log("$locationChangeSuccess... you could trigger something here ...SUCCESS");
+		});
+		$scope.$on('$locationChangeStart', function(next, current) { 
+			console.log("$locationChangeStart... you could trigger something here ...START");
+		});
+		$scope.$on('$includeContentRequested', function(next, current) { 
+			console.log("$includeContentRequested... you could trigger something here ...SUCCESS");
+		});
+		$scope.$on('$includeContentLoaded', function(next, current) { 
+			console.log("$includeContentLoaded... you could trigger something here ...START");
+			init();
+			documentComponent.datepicker();
+		});
+	    
 	}]);

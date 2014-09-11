@@ -8,7 +8,7 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
     	var dataResult = '';	
         $scope.grid.data = result;
         $scope.beforeData = angular.copy(result);
-        console.debug(result);
+        console.log(result);
     }
     function onStatsChart2Fail(data, status, headers, config) {
         console.log("call error");
@@ -40,7 +40,7 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
     $scope.save = function () {
         var data = $scope.grid.save();
         if(angular.equals($scope.grid.save(), $scope.beforeData) == true) {
-        	console.debug("changeData: No");
+        	console.log("changeData: No");
         }
         else {
         	var r = confirm("변경된 데이터가 있습니다!\n정말 저장하시겠습니까?");
@@ -49,7 +49,7 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
         		// TODO : after database update service call
         	}
         	/** TO DO Change data Commit call */
-        	console.debug("changeData: Yes");
+        	console.log("changeData: Yes");
         }
         $scope.editingGrid = false;
     };
