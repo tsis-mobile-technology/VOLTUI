@@ -74,6 +74,7 @@ var templateCtrl = angular.module('myApp-template1.controllers', [])
 			console.log("$includeContentLoaded... you could trigger something here ...START");
 			init();
 			documentComponent.datepicker();
+			setupGrid("grdMain", "100%", "500px");
 		});
 	    
 	}]);

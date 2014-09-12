@@ -2,7 +2,7 @@
 
 /* Controllers */
 templateCtrl.controller('MyCtrl_template1_main_real', ['$scope', 'requestHTTP', '$templateCache', function($scope, requestHTTP, $templateCache) {
-	
+	this.form = $scope.form;
     // RealGrid variables
     var mainGrid;
     var mainProvider;
@@ -10,7 +10,7 @@ templateCtrl.controller('MyCtrl_template1_main_real', ['$scope', 'requestHTTP', 
     // object element insert at div element
     // tagId(grdMain) named element is must exists in body 
     console.log("0");
-    setupGrid("grdMain", "100%", "500px");
+//    setupGrid("grdMain", "100%", "500px");
 
     RealGrids.onload = function (id) {
         console && console.log("==> RealGrid loaded.");
@@ -38,8 +38,6 @@ templateCtrl.controller('MyCtrl_template1_main_real', ['$scope', 'requestHTTP', 
 
     $scope.save = function () {
     	$templateCache.put('templateId.html', 'This is the content of the template');
-    
-console.log($templateCache.get('partials/template1_contents_action_two.html'));
     };
 
     function setFields(provider) {
