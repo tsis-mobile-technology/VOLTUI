@@ -14,20 +14,13 @@
             
         RealGrids.onload = function (id) {
             console && console.log("==> RealGrid loaded.");
-            console.log("1");
             mainGrid = new RealGrids.GridView(id);
-            console.log("2");
             mainProvider = new RealGrids.LocalDataProvider();
-            console.log("3");
             mainGrid.setDataProvider(mainProvider);
-            console.log("4");
             
             setFields(mainProvider);
-            console.log("5");
             setColumns(mainGrid);
-            console.log("6");
             setOptions(mainGrid);
-            console.log("7");
             
             loadData();
         }

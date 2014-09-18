@@ -11,9 +11,14 @@
         function setDaoJSONResult(result, status, headers, config) {
         	var dataResult = '';	
 //        	dataResult = angular.fromJson(result);
-//            $scope.tframe_simple_dao_json_result = result;
+            $scope.tframe_simple_dao_json_result = result;
             $scope.grid.data = result;
             $scope.beforeData = angular.copy(result);
+            
+            console.log(result._error);
+            console.log(result.selectAgent);
+            console.log(result.selectBeans);
+            console.log(result.selectBean);
         }
         function setDaoTestResult(result, status, headers, config) {
             $scope.tframe_simple_dao_test_result = result;
@@ -23,9 +28,9 @@
             console.log("call error");
         }
         // get data
-//		requestHTTP.getJsonCrossdomainCallback("/t-web/invokeDao.do?service=sampleDao", "", setDaoResult, onStatsChart2Fail);
+		requestHTTP.getJsonCrossdomainCallback("/t-web/invokeDao.do?service=sampleDao", "", setDaoResult, onStatsChart2Fail);
 		requestHTTP.getJsonCrossdomainCallback("/t-web/invokeDao.json?_jsondata={%22service%22=%22sampleDao%22}", "", setDaoJSONResult, onStatsChart2Fail);
-//		requestHTTP.getJsonCrossdomainCallback("/t-web/invokeDao.test?service=sampleDao", "", setDaoTestResult, onStatsChart2Fail);
+		requestHTTP.getJsonCrossdomainCallback("/t-web/invokeDao.test?service=sampleDao", "", setDaoTestResult, onStatsChart2Fail);
 		//Grid edit function
 		$scope.selections = [];
         $scope.clickedOnRecord = {};

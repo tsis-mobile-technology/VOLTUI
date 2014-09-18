@@ -9,7 +9,8 @@ angular.module('myApp', [
   'myApp.directives',
   'myApp.controllers',
   'n3-charts.linechart',
-  'ngReactGrid'
+  'ngReactGrid',
+  'ngDialog'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {templateUrl: 'partials/dashboard.html', controller: 'MyCtrl_dashboard'});
