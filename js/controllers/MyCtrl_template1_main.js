@@ -10,8 +10,14 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
         $scope.beforeData = angular.copy(result);
         console.log(result);
     }
+    
     function onStatsChart2Fail(data, status, headers, config) {
         console.log("call error");
+    }
+    
+    // Action Two : Input Data setting
+    function setData() {
+    	$scope.action_two = $scope.clickedOnRecord;
     }
     
     // get data
@@ -34,6 +40,7 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
     	var r = confirm("데이터를 초기화 하시겠습니까?");
     	if (r == true) {
     	    $scope.grid.data = angular.copy($scope.beforeData);
+    	    $scope.action_two = [];
     	} 
     };
 
@@ -58,7 +65,7 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
         $scope.editingGrid = false;
         $scope.grid.cancel();
     };
-
+  
 	$scope.grid = {
             data: [],
             columnDefs: [
@@ -72,6 +79,7 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
                     render: function(row) {
                     	return React.DOM.a({href:"javascript:", onClick: function() {
                             $scope.clickedOnRecord = row;
+                            setData();
                         }}, row.ID_USER);
                     }
                 },

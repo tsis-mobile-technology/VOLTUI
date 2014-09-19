@@ -71,6 +71,6 @@ config(['$routeProvider', function($routeProvider) {
  $routeProvider.when('/welcome', {templateUrl: 'partials/template1-welcome.html', controller: 'MyCtrl_template1_welcome'});
  $routeProvider.otherwise({redirectTo: '/welcome'});
 }])
-.run(['$rootScope', function($rootScope) {
- console.log("myApp-template1 run.....");
+.run(['$rootScope', '$templateCache', function($rootScope, $templateCache) {
+	console.log("myApp-template1 run.....");
 }]);

@@ -26,11 +26,30 @@ templateCtrl.controller('MyCtrl_template1_main_real', ['$scope', 'requestHTTP', 
         loadData();
     }
     
-    $scope.init = function () {
-		$scope.broad_code = '';
-		$scope.search_text = '';
+    // Action Two : Input Data setting
+    function setData() {
+        var row = 0;
+        var current = grdMain.getCurrent();
+     
+        if (current) {
+            row = Math.max(0, current.dataRow);
+        }
+     
+        var v = mainProvider.getJsonRow(row);
+        console.log(row + " => " + JSON.stringify(v));
+        $scope.action_two = [];
+    	$scope.action_two = mainProvider.getJsonRow(row);
+    	
+    	console.log($scope.action_two.ID_SO);
+    	
+    	$scope.$apply();
+    }
+    
+    $scope.init = function (action_two) {
+
     	var r = confirm("데이터를 초기화 하시겠습니까?");
     	if (r == true) {
+    		$scope.action_two = [];
     		grdMain.cancel();
     		mainProvider.rollback();
     	} 
@@ -39,12 +58,12 @@ templateCtrl.controller('MyCtrl_template1_main_real', ['$scope', 'requestHTTP', 
     $scope.save = function () {
     	$templateCache.put('templateId.html', 'This is the content of the template');
     };
-
+    
     function setFields(provider) {
         // json array for data fields
         var fields = [{fieldName: "FG_GROUP",datType: "text"}, 
-            {fieldName: "CD_POSITION"}, 
-            {fieldName: "NO_TEL"}, 
+            {fieldName: "ID_SO"}, 
+            {fieldName: "NM_USER"}, 
             {fieldName: "DD_IN"},
             {fieldName: "CD_BRANCH"},
             {fieldName: "FG_USER"},
@@ -67,14 +86,14 @@ templateCtrl.controller('MyCtrl_template1_main_real', ['$scope', 'requestHTTP', 
             header: { text: "FG_GROUP" },
             styles: { textAlignment: "far" }
         }, {
-                fieldName: "CD_POSITION",
+                fieldName: "ID_SO",
             width: 80,
-            header: { text: "CD_POSITION" },
+            header: { text: "ID_SO" },
             styles: { textAlignment: "near" }
         }, {
-            fieldName: "NO_TEL",
+            fieldName: "NM_USER",
             width: 100,
-            header: { text: "NO_TEL" },
+            header: { text: "NM_USER" },
             styles: { textAlignment: "near" }
         }, {
             fieldName: "DD_IN",
@@ -141,6 +160,9 @@ templateCtrl.controller('MyCtrl_template1_main_real', ['$scope', 'requestHTTP', 
                 deleteRowsMessage: "Are you sure?"          
             },          
         });
+        grid.onDataCellClicked = function(id, index) {
+        	setData();
+        }
     }
     
     function setLoading(v) {
