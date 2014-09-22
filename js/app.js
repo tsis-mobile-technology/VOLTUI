@@ -10,7 +10,8 @@ angular.module('myApp', [
   'myApp.controllers',
   'n3-charts.linechart',
   'ngReactGrid',
-  'ngDialog'
+  'ngDialog',
+  'hljs'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/dashboard', {templateUrl: 'partials/dashboard.html', controller: 'MyCtrl_dashboard'});
@@ -47,13 +48,34 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/tframe-simple-dao-detail', {templateUrl: 'partials/tframe-simple-dao-detail.html', controller: 'MyCtrl_tframe_simple_dao_detail'});
   $routeProvider.otherwise({redirectTo: '/dashboard'});
 }])
-.run(['$rootScope', function($rootScope) {
+.run(['$rootScope', '$location', '$templateCache', function($rootScope, $location, $templateCache) {
   console.log("myApp run.....");
   $rootScope.viewUIFeatures = false;
   $rootScope.viewIcons = false;
   $rootScope.viewCharts = false;
   $rootScope.viewForms = false;
   $rootScope.viewExamplePages = false;
+  $rootScope.$on('$routeChangeSuccess', function () {
+	  $rootScope.path = $location.path();
+	  $rootScope.disabled = false;
+	  $rootScope.source = null;
+	  console.log("$rootScope.path:" + $rootScope.path);
+  });
+  $rootScope.source = null;
+  $rootScope.subSource = null;
+
+  $rootScope.toggleSource = function (target) {
+		target = target || 'source';
+		console.log(target);
+		if ($rootScope[target] === null) {
+			$rootScope[target] = $templateCache.get('partials' + $rootScope.path + '.html')[1];
+			console.log($templateCache.get('partials' + $rootScope.path + '.html')[1]);
+//			$scope.subSource = $templateCache.get('partials' + $scope.path + '.html')[1];
+		}
+		else {
+			$rootScope[target] = null;
+		}
+	};
 }]);
 
 angular.module('myApp-template1', [

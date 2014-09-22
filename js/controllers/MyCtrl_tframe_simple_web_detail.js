@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-	myCtrl.controller('MyCtrl_tframe_simple_web_detail', ['$scope', 'requestHTTP', function($scope, requestHTTP){
+	myCtrl.controller('MyCtrl_tframe_simple_web_detail', ['$scope', '$templateCache', 'requestHTTP', function($scope, $templateCache, requestHTTP){
         // use case : XHR
         function setWebResult(result, status, headers, config) {
             $scope.tframe_simple_web_result = result;
@@ -21,6 +21,4 @@
 		requestHTTP.getJsonCrossdomainCallback("../sampleBiz.do?", "", setWebResult, onStatsChart2Fail);
 		requestHTTP.getJsonCrossdomainCallback("../sampleBiz.json?_jsondata={}", "", setWebJSONResult, onStatsChart2Fail);
 		requestHTTP.getJsonCrossdomainCallback("../sampleBiz.test?", "", setWebTestResult, onStatsChart2Fail);
-		
-		
 	}]);
