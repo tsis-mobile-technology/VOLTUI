@@ -3,9 +3,9 @@
 /* Controllers */
 	myCtrl.controller('MyCtrl_ui_elements', ['$scope', function($scope){
 		/* ---------- Star Rating ---------- */
-		$('.raty').raty({
-			score : 4 //default stars
-		});
+//		$('.raty').raty({
+//			score : 4 //default stars
+//		});
 
 		$('#add-sticky').click(function(){
 

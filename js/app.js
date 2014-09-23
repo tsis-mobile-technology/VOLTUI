@@ -55,22 +55,22 @@ config(['$routeProvider', function($routeProvider) {
   $rootScope.viewCharts = false;
   $rootScope.viewForms = false;
   $rootScope.viewExamplePages = false;
+  
   $rootScope.$on('$routeChangeSuccess', function () {
 	  $rootScope.path = $location.path();
 	  $rootScope.disabled = false;
 	  $rootScope.source = null;
 	  console.log("$rootScope.path:" + $rootScope.path);
+	  if($rootScope['subSource'] != null) $rootScope['subSource'] = null;
   });
+  
   $rootScope.source = null;
   $rootScope.subSource = null;
 
   $rootScope.toggleSource = function (target) {
 		target = target || 'source';
-		console.log(target);
 		if ($rootScope[target] === null) {
 			$rootScope[target] = $templateCache.get('partials' + $rootScope.path + '.html')[1];
-			console.log($templateCache.get('partials' + $rootScope.path + '.html')[1]);
-//			$scope.subSource = $templateCache.get('partials' + $scope.path + '.html')[1];
 		}
 		else {
 			$rootScope[target] = null;
