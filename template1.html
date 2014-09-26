@@ -41,12 +41,12 @@ and open the template in the editor.
             <div class="row">
             <!-- left-menu-one-depth start -->
 			<div id="left-category" class="col-md-1"  ng-controller="MyCtrl_template1_left_menu_one">
-				<div ng-include src="'partials/template1_left_menu_one_depth.html'"></div>
+				<div ng-include src="'partials/template1_left_menu_one_depth.html'" ng-init="oneDepth()"></div>
 			</div>
             <!-- left-menu-one-depth end -->
             <!-- left-menu-two-depth start -->
-            <div id="left-menu" class="col-md-2"  ng-controller="MyCtrl_template1_left_menu_one">
-				<div ng-include src="'partials/template1_left_menu_two_depth.html'"></div>
+            <div id="left-menu" class="col-md-2"  ng-controller="MyCtrl_template1_left_menu_two">
+				<div ng-include src="'partials/template1_left_menu_two_depth.html'" ng-init="twoDepth()"></div>
             </div>
             <!-- left-menu-two-depth end -->
             <!-- contents start -->

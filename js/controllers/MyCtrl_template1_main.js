@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'requestHTTP', 'ngReactGridTextField', 'ngReactGridCheckbox',function($scope, $timeout, requestHTTP, ngReactGridTextField, ngReactGridCheckbox){
+templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'requestHTTP', 'ngReactGridTextField', 'ngReactGridCheckbox', 'ngDialog', function($scope, $timeout, requestHTTP, ngReactGridTextField, ngReactGridCheckbox, ngDialog){
     // use case : XHR
 	// XHR Success function
     function setDaoJSONResult(result, status, headers, config) {
@@ -37,11 +37,30 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
     };
     
     $scope.init = function () {
-    	var r = confirm("데이터를 초기화 하시겠습니까?");
-    	if (r == true) {
+/* old type */
+//    	var r = confirm("데이터를 초기화 하시겠습니까?");
+//    	if (r == true) {
+//    	    $scope.grid.data = angular.copy($scope.beforeData);
+//    	    $scope.action_two = [];
+//    	} 
+/* ngDialog type */
+    	ngDialog.openConfirm({
+            showClose: false,
+            closeByEscape: false,
+            closeByDocument: false,
+            data: angular.toJson({
+                helperData: "데이터를 초기화 하시겠습니까?",
+                confirm: "초기화",
+                close: "취소"
+            }),
+            template: 'partials/template1_popup_confirm.html'
+        }).then(function() {
+            console.log("They clicked ok");
     	    $scope.grid.data = angular.copy($scope.beforeData);
     	    $scope.action_two = [];
-    	} 
+        }, function() {
+            console.log("They clicked cancel");
+        });
     };
 
     $scope.save = function () {
@@ -50,11 +69,43 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
         	console.log("changeData: No");
         }
         else {
-        	var r = confirm("변경된 데이터가 있습니다!\n정말 저장하시겠습니까?");
-        	if (r == true) {
-        		$scope.beforeData = angular.copy(data);
-        		// TODO : after database update service call
-        	}
+//        	var r = confirm("변경된 데이터가 있습니다!\n정말 저장하시겠습니까?");
+//        	if (r == true) {
+//        		$scope.beforeData = angular.copy(data);
+//        		// TODO : after database update service call
+//        	}
+        	ngDialog.openConfirm({
+                showClose: false,
+                closeByEscape: false,
+                closeByDocument: false,
+                data: angular.toJson({
+                    helperData: "변경된 데이터가 있습니다!\n정말 저장하시겠습니까?",
+                    confirm: "저장",
+                    close: "취소"
+                }),
+                template: 'partials/template1_popup.html'
+            }).then(function() {
+                console.log("They clicked ok");
+                $scope.beforeData = angular.copy(data);
+                // post data
+                function postTestResult(result, status, headers, config) {
+                	console.log("result:" + result);
+                	console.log("status:" + status);
+                	console.log("headers:" + headers);
+                	console.log("config:" + config);
+                }
+                
+                function postTestResultFail(result, status, headers, config) {
+                	console.log("result:" + result);
+                	console.log("status:" + status);
+                	console.log("headers:" + headers);
+                	console.log("config:" + config);
+                }
+                
+            	requestHTTP.postJsonCrossdomainCallback("/t-web/invokeDao.do?service=sampleDao", data, postTestResult, postTestResultFail);
+            }, function() {
+                console.log("They clicked cancel");
+            });
         	/** TO DO Change data Commit call */
         	console.log("changeData: Yes");
         }

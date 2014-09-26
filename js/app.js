@@ -85,14 +85,18 @@ angular.module('myApp-template1', [
  'myApp-template1.services',
  'myApp-template1.directives',
  'myApp-template1.controllers',
- 'ngReactGrid'
+ 'ngReactGrid',
+ 'ngDialog'
 ]).
 config(['$routeProvider', function($routeProvider) {
- $routeProvider.when('/main', {templateUrl: 'partials/template1-main.html', controller: 'MyCtrl_template1_main'});
- $routeProvider.when('/main-real', {templateUrl: 'partials/template1-main2.html', controller: 'MyCtrl_template1_main_real'});
+ $routeProvider.when('/PA110' , {templateUrl: 'partials/template1-main.html', controller: 'MyCtrl_template1_main'});
+ $routeProvider.when('/PA120', {templateUrl: 'partials/template1-main2.html', controller: 'MyCtrl_template1_main_real'});
  $routeProvider.when('/welcome', {templateUrl: 'partials/template1-welcome.html', controller: 'MyCtrl_template1_welcome'});
- $routeProvider.otherwise({redirectTo: '/welcome'});
+ $routeProvider.otherwise({redirectTo: '/PA110'});
 }])
-.run(['$rootScope', '$templateCache', function($rootScope, $templateCache) {
+.run(['$rootScope', '$templateCache', '$location', 'requestHTTP',  function($rootScope, $templateCache, $location, requestHTTP) {
 	console.log("myApp-template1 run.....");
+	// use case : XHR
+	// XHR Success function
+    
 }]);

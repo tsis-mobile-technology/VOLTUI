@@ -5,17 +5,9 @@
 		공사공정<br />관리<br />시스템
 	</div>
 	<div class="category-menu">
-		<button>
-			Dash<br />Board
-		</button>
-		<button class="active">
-			공정<br />관리
-		</button>
-		<button>
-			자재<br />관리
-		</button>
-		<button>
-			자산<br />관리
+<!-- 		<button class="active">공정<br />관리</button> -->
+		<button ng-repeat="menuMain in menuMains | menufilter:subMenu" ng-click="goDepth1st('{{menuMain.MENU_ID}}')">
+			{{menuMain.DESCRIPTION}}
 		</button>
 		<button ng-click="goVOLTUI()">
 			VOLT<br />UI

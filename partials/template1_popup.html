@@ -1,0 +1,56 @@
+<div class="dialog-header">
+    <h3>Table Dialog</h3>
+</div>
+<div class="dialog-content">
+    <div>
+        {{ ngDialogData.helperData }}
+    </div>
+    <div>
+		<table class="table table-bordered t-table">
+			<tbody>
+				<tr>
+					<td class="title">예산계정</td>
+					<td class="td-budget"><select class="form-control-user1">
+							<option>최두현</option>
+							<option>박창선</option>
+							<option>이현태</option>
+							<option>양대진</option>
+					</select> <select class="form-control-user1">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+					</select> <select class="form-control-user1">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+					</select></td>
+					<td class="title">설계명</td>
+					<td style="width: 250px;" class="va-m"><input type="text"
+						class="form-control" placeholder=""></td>
+				</tr>
+				<tr>
+					<td class="title">노무구분</td>
+					<td class="td-work" colspan="3"><input type="text"
+						class="form-control" placeholder=""> <label
+						class="checkbox-inline f-l va-m"> <input type="checkbox">
+							노무구분 변경
+					</label> <select class="form-control">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+					</select></td>
+				</tr>
+			</tbody>
+		</table>
+    </div>
+    <div>
+        <button class="confirm right" ng-click="confirm()">{{ngDialogData.confirm}}</button>
+        <button class="cancel" ng-click="closeThisDialog()">{{ngDialogData.close}}</button>
+    </div>
+</div>

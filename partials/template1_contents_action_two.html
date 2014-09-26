@@ -11,22 +11,13 @@
 		</tr>
 		<tr>
 			<td class="title">공사구분</td>
-			<td><label class="checkbox-inline"> <input
-					type="checkbox" id="inlineCheckbox1" value="option1"
-					ng-model="$parent.action_two.ims_type1"> 선로공사
-			</label> <label class="checkbox-inline"> <input type="checkbox"
-					id="inlineCheckbox2" value="option2"
-					ng-model="$parent.action_two.ims_type2"> 관로공사
-			</label> <label class="checkbox-inline"> <input type="checkbox"
-					id="inlineCheckbox3" value="option3"
-					ng-model="$parent.action_two.ims_type3"> 보상공사<br />
-			</label> <label class="checkbox-inline" style="padding-left: 10px;">
-					<input type="checkbox" id="inlineCheckbox4" value="option4"
-					ng-model="$parent.action_two.ims_type4"> 도급공사
-			</label> <label class="checkbox-inline"> <input type="checkbox"
-					id="inlineCheckbox5" value="option5"
-					ng-model="$parent.action_two.ims_type5"> 비용공사
-			</label></td>
+			<td>
+				<label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="option1"	ng-model="$parent.action_two.ims_type1"> 선로공사</label>
+				<label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox2" value="option2"	ng-model="$parent.action_two.ims_type2"> 관로공사</label> 
+				<label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox3" value="option3" ng-model="$parent.action_two.ims_type3"> 보상공사	</label>
+				<label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox4" value="option4" ng-model="$parent.action_two.ims_type4"> 도급공사</label>
+				<label class="checkbox-inline"> <input type="checkbox" id="inlineCheckbox5" value="option5" ng-model="$parent.action_two.ims_type5"> 비용공사</label>
+			</td>
 			<td class="title">설계코드</td>
 			<td style="width: 250px;" class="va-m"><input type="text"
 				class="form-control" placeholder=""
@@ -34,25 +25,14 @@
 		</tr>
 		<tr>
 			<td class="title">예산계정</td>
-			<td class="td-budget"><select class="form-control-user1">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-			</select> <select class="form-control-user1">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-			</select> <select class="form-control-user1">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-			</select></td>
+			<td class="td-budget">
+				<select class="form-control-user1" ng-model="$parent.action_two.NM_USER">
+						<option>최두현</option>
+						<option>박창선</option>
+						<option>이현태</option>
+						<option>양대진</option>
+				</select>
+			</td>
 			<td class="title">설계명</td>
 			<td style="width: 250px;" class="va-m"><input type="text"
 				class="form-control" placeholder=""></td>

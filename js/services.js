@@ -60,6 +60,26 @@ angular.module('myApp.services', []).
 	      success(callback).
 	      error(failback);
 	  };
+	  
+	  factory.postJsonCrossdomainCallback = function(url, data, callback, failback) {
+	      $http({
+	          method      : 'POST',
+	          url         : url,
+	          dataType    : 'json',
+	          data        : data,
+	          crossDomain : true,
+	          timeout     : 30000,
+	          header      : {
+	                  'Access-Control-Allow-Origin': '*', //'http://59.12.238.193:8080',
+	                  'Access-Control-Allow-Headers': 'GET, POST, PUT, DELETE, OPTIONS',
+	                  'Access-Control-Allow-Methods': 'Origin Accept Content-Type X-Requested-With X-CSRF-Token'}
+	      }).
+	      success(function(data, status, headers, config) {
+	    	  console.log("Response : " + data._error);
+	      }).
+	      success(callback).
+	      error(failback);
+	  };
 
 	  return factory;
 	}]).  
@@ -143,6 +163,7 @@ angular.module('myApp-template1.services', []).
 factory('documentComponent', function() {
 	  var factory = {};
 	  factory.datepicker = function() {
+		  	console.log("asdfasdf");
 	        $( "#datepicker" ).datepicker({
 	            monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
 	            monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
@@ -214,6 +235,26 @@ factory('requestHTTP', ['$rootScope', '$http', function($rootScope, $http) {
                   'Access-Control-Allow-Origin': '*', //'http://59.12.238.193:8080',
                   'Access-Control-Allow-Headers': 'GET, POST, PUT, DELETE, OPTIONS',
                   'Access-Control-Allow-Methods': 'Origin Accept Content-Type X-Requested-With X-CSRF-Token'}
+      }).
+      success(callback).
+      error(failback);
+  };
+  
+  factory.postJsonCrossdomainCallback = function(url, data, callback, failback) {
+      $http({
+          method      : 'POST',
+          url         : url,
+          dataType    : 'json',
+          data        : data,
+          crossDomain : true,
+          timeout     : 30000,
+          header      : {
+                  'Access-Control-Allow-Origin': '*', //'http://59.12.238.193:8080',
+                  'Access-Control-Allow-Headers': 'GET, POST, PUT, DELETE, OPTIONS',
+                  'Access-Control-Allow-Methods': 'Origin Accept Content-Type X-Requested-With X-CSRF-Token'}
+      }).
+      success(function(data, status, headers, config) {
+    	  console.log("Response : " + data._error);
       }).
       success(callback).
       error(failback);

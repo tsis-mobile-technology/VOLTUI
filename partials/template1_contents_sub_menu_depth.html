@@ -1,6 +1,3 @@
-
-<div class="tab-menu">
-	<div ng-class="style1" ng-click="goWelcome()" ng-model="style1">예제</div>
-	<div ng-class="style2" ng-click="goReact()" ng-model="style2">React-case</div>
-	<div ng-class="style3" ng-click="goRealgrid()" ng-model="style3">Realgrid-case</div>
-</div>
+ 	<div class="tab-menu">
+		<div ng-class="style1"  ng-repeat="menu2ST in menu2STs | menufilter:stContentsMenu" ng-click="goContents(menu2ST.MENU_ID)">{{menu2ST.DESCRIPTION}}</div>
+	</div>

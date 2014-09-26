@@ -1,21 +1,15 @@
 
 <div class="menu-item">
-	<div class="menu-title">
-		asd1f<span class="caret"></span>
+	<div class="menu-title" ng-repeat-start="menu1ST in menu1STs | menufilter:stMenu" ng-click="showTwoDepth(menu1ST.MENU_ID)">
+		{{menu1ST.DESCRIPTION}}<span class="caret"></span>
 	</div>
-	<ul class="depth-1">
-		<li><span class="glyphicon glyphicon-plus-sign"></span> Menu 1
-			<ul class="depth-2">
-				<li><span class="icon">┗</span>라</li>
-				<li><span class="icon">┗</span>라</li>
-				<li><span class="icon">┗</span>라</li>
-			</ul></li>
-		<li><span class="glyphicon glyphicon-plus-sign"></span> Menu 2
-			<ul class="depth-2">
-				<li><span class="icon">┗</span>라</li>
-				<li><span class="icon">┗</span>라</li>
-				<li><span class="icon">┗</span>라</li>
-			</ul></li>
+	<ul class="depth-1" ng-repeat-end ng-model="menu1ST.MENU_ID">
+		<li>
+			<span class="glyphicon glyphicon-plus-sign"></span>{{menu1ST.DESCRIPTION}}
+			<ul class="depth-2" ng-model="menu1ST.MENU_ID">
+				<li ng-repeat="menu1ST in menu1STs | menufilter:menu1ST.MENU_ID" ng-click="goContentsMenu(menu1ST.MENU_ID)"><span class="icon">┗</span>{{menu1ST.DESCRIPTION}}</li>
+			</ul>
+		</li>
 	</ul>
 </div>
 <div class="user-info">
