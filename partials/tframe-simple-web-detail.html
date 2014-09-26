@@ -7,17 +7,15 @@
 			<div class="box">
 				<div class="box-header">
 					<h2>
-						<i class="fa fa-bullhorn"></i><span class="break"></span>tFrame
-						Simple Web
+						<i class="fa fa-bullhorn"></i><span class="break"></span>tFrame	Simple Web
 					</h2>
 					<div class="box-icon">
 						<i class="fa fa-wrench" ng-click="toggleSource('subSource')"></i>
-						<a href="ui-elements.html#" class="btn-minimize"><i
-							class="fa fa-chevron-up"></i></a> <a href="ui-elements.html#"
-							class="btn-close"><i class="fa fa-times"></i></a>
+						<i class="fa fa-chevron-up" ng-click="box_content_show.a = !box_content_show.a"></i>
+						<i class="fa fa-times"></i>
 					</div>
 				</div>
-				<div class="box-content alerts">
+				<div class="box-content alerts" ng-hide="box_content_show.a">
 					<div class="alert alert-warning">
 						<button type="button" class="close" data-dismiss="alert">×</button>
 						<h4 class="alert-heading">Simple Web Example Result</h4>
@@ -32,12 +30,11 @@
 					</h2>
 					<div class="box-icon">
 						<i class="fa fa-wrench" ng-click="toggleSource('subSource')"></i>
-						<a href="ui-elements.html#" class="btn-minimize"><i
-							class="fa fa-chevron-up"></i></a> <a href="ui-elements.html#"
-							class="btn-close"><i class="fa fa-times"></i></a>
+						<i class="fa fa-chevron-up" ng-click="box_content_show.b = !box_content_show.b"></i>
+						<i class="fa fa-times"></i>
 					</div>
 				</div>
-				<div class="box-content alerts">
+				<div class="box-content alerts" ng-hide="box_content_show.b">
 					<div class="alert alert-warning">
 						<button type="button" class="close" data-dismiss="alert">×</button>
 						<h4 class="alert-heading">Simple Web JSON Example Result</h4>
@@ -52,12 +49,11 @@
 					</h2>
 					<div class="box-icon">
 						<i class="fa fa-wrench" ng-click="toggleSource('subSource')"></i>
-						<a href="ui-elements.html#" class="btn-minimize"><i
-							class="fa fa-chevron-up"></i></a> <a href="ui-elements.html#"
-							class="btn-close"><i class="fa fa-times"></i></a>
+						<i class="fa fa-chevron-up" ng-click="box_content_show.c = !box_content_show.c"></i>
+						<i class="fa fa-times"></i>
 					</div>
 				</div>
-				<div class="box-content alerts">
+				<div class="box-content alerts" ng-hide="box_content_show.c">
 					<div class="alert alert-warning">
 						<button type="button" class="close" data-dismiss="alert">×</button>
 						<h4 class="alert-heading">Simple Web Test Example Result</h4>
