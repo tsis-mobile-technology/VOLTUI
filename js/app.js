@@ -91,6 +91,7 @@ angular.module('myApp-template1', [
 config(['$routeProvider', function($routeProvider) {
  $routeProvider.when('/PA110' , {templateUrl: 'partials/template1-main.html', controller: 'MyCtrl_template1_main'});
  $routeProvider.when('/PA120', {templateUrl: 'partials/template1-main2.html', controller: 'MyCtrl_template1_main_real'});
+ $routeProvider.when('/UA120', {templateUrl: 'partials/twda01ea.html', controller: 'twda01ea'});
  $routeProvider.when('/welcome', {templateUrl: 'partials/template1-welcome.html', controller: 'MyCtrl_template1_welcome'});
  $routeProvider.otherwise({redirectTo: '/PA110'});
 }])
