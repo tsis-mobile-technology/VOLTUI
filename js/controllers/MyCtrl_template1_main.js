@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'requestHTTP', 'ngReactGridTextField', 'ngReactGridCheckbox', 'ngDialog', function($scope, $timeout, requestHTTP, ngReactGridTextField, ngReactGridCheckbox, ngDialog){
+templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'requestHTTP', 'ngReactGridTextField', 'ngReactGridCheckbox', 'ngDialog', '$filter', function($scope, $timeout, requestHTTP, ngReactGridTextField, ngReactGridCheckbox, ngDialog, $filter){
     // use case : XHR
 	// XHR Success function
     function setDaoJSONResult(result, status, headers, config) {
@@ -26,7 +26,7 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
 	$scope.selections = [];
     $scope.clickedOnRecord = {};
     $scope.editingGrid = false;
-
+    
     $scope.isEditing = function () {
         return $scope.editingGrid;
     };
@@ -34,6 +34,12 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
     $scope.edit = function () {
         $scope.grid.edit();
         $scope.editingGrid = true;
+    };
+    // Date Initial setting
+    $scope.search_text = new Date();
+    $scope.search = function(search_text) {
+    	var today = $filter('date')($scope.search_text, 'yyyyMM');
+    	alert("날짜 선택은? " + today);
     };
     
     $scope.init = function () {
@@ -83,7 +89,8 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
                     confirm: "저장",
                     close: "취소"
                 }),
-                template: 'partials/template1_popup.html'
+                template: 'partials/template1_popup.html',
+                controller: 'SavePopupController'
             }).then(function() {
                 console.log("They clicked ok");
                 $scope.beforeData = angular.copy(data);
@@ -117,6 +124,63 @@ templateCtrl.controller('MyCtrl_template1_main', ['$scope', '$timeout', 'request
         $scope.grid.cancel();
     };
   
+	$scope.grid = {
+            data: [],
+            columnDefs: [
+                new ngReactGridCheckbox($scope.selections),
+                {
+                	field: "ID_USER",
+                	displayName: "ID_USER",
+                	edit: function (row) {
+                        return new ngReactGridTextField(row, 'ID_USER');
+                    },
+                    render: function(row) {
+                    	return React.DOM.a({href:"javascript:", onClick: function() {
+                            $scope.clickedOnRecord = row;
+                            setData();
+                        }}, row.ID_USER);
+                    }
+                },
+                {field: "ID_SO",displayName: "ID_SO"},
+                {field: "ID_RO",displayName: "ID_RO"},
+                {field: "NM_USER",displayName: "NM_USER"},
+                {field: "NO_TEL",displayName: "NO_TEL"},
+                {field: "NO_FAX",displayName: "NO_FAX"},
+                {field: "EMAIL",displayName: "EMAIL"},
+                {field: "ID_LOGIN",displayName: "ID_LOGIN"},
+                {field: "PWD",displayName: "PWD"},
+                {field: "DT_PWD",displayName: "DT_PWD"}
+            ],
+            horizontalScroll: true//,
+//            localMode: false,
+//            getData: function() {
+//            	$timeout(function() {
+//
+//                }, 2000);
+//            }
+        };
+}]);
+
+templateCtrl.controller('SavePopupController',['$scope', '$timeout', 'requestHTTP', 'ngReactGridTextField', 'ngReactGridCheckbox', 'ngDialog', '$filter', function($scope, $timeout, requestHTTP, ngReactGridTextField, ngReactGridCheckbox, ngDialog, $filter){ 
+	function setDaoJSONResult(result, status, headers, config) {
+    	var dataResult = '';	
+        $scope.grid.data = result;
+        $scope.beforeData = angular.copy(result);
+        console.log(result);
+    }
+    
+    function onStatsChart2Fail(data, status, headers, config) {
+        console.log("call error");
+    }
+    
+    // Action Two : Input Data setting
+    function setData() {
+    	$scope.action_two = $scope.clickedOnRecord;
+    }
+    
+    // get data
+	requestHTTP.getJsonCrossdomainCallback("/t-web/invokeDao.json?_jsondata={%22service%22=%22sampleDao%22}", "", setDaoJSONResult, onStatsChart2Fail);
+	
 	$scope.grid = {
             data: [],
             columnDefs: [

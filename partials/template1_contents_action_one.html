@@ -1,7 +1,6 @@
 
 <h4 class="t-title">공사설계서 생성</h4>
 <table class="table table-bordered t-table">
-	<!-- <form name="contents_action_one" ng-controller="myCtrl as MyCtrl_template1_main"> -->
 	<tbody>
 		<tr>
 			<td class="title">기준년월</td>
@@ -11,14 +10,13 @@
 						<span class="input-group-addon glyphicon glyphicon-calendar"></span>
 						<!-- <input ng-model="search_text" type="text" id="datepicker"
 							class="form-control" placeholder=""> -->
-						<input type="date" ng-model="serarch_text" placeholder="yyyy-MM-dd" required/>
+						<input type="date" ng-model="$parent.search_text" required/>
 					</div>
 				</div>
-				<button id="btn_search" class="btn f-l btn-tboard">조회</button>
+				<button id="btn_search" class="btn f-l btn-tboard" ng-click="search();">조회</button>
 			</td>
 		</tr>
 	</tbody>
-	<!-- </form> -->
 </table>
 <div class="button-group-r">
 	<button class="btn btn-tboard" ng-click="init();">초기화</button>

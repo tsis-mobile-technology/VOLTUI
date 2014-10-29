@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-templateCtrl.controller('MyCtrl_template1_main_real', ['$scope', 'requestHTTP', '$templateCache', function($scope, requestHTTP, $templateCache) {
+templateCtrl.controller('MyCtrl_template1_main_real', ['$scope', 'requestHTTP', '$templateCache', '$filter', function($scope, requestHTTP, $templateCache, $filter) {
 	this.form = $scope.form;
     // RealGrid variables
     var mainGrid;
@@ -44,6 +44,13 @@ templateCtrl.controller('MyCtrl_template1_main_real', ['$scope', 'requestHTTP', 
     	
     	$scope.$apply();
     }
+    
+    // Date Initial setting
+    $scope.search_text = new Date();
+    $scope.search = function(search_text) {
+    	var today = $filter('date')($scope.search_text, 'yyyyMMdd');
+    	alert("날짜 선택은? " + today);
+    };
     
     $scope.init = function (action_two) {
 
